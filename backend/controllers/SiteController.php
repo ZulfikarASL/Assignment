@@ -45,7 +45,7 @@ class SiteController extends Controller
      * {@inheritdoc}
      */
     public function actions()
-    {
+    {   $this->layout="metroMain";
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -97,4 +97,20 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+
+    public function actionError()
+
+    {
+        $this->layout="metroMain";
+        $error = Yii::app()->errorHandler->error;
+
+
+        if ($error) {
+
+            $this->render('error1', array('error' => $error));
+
+        }
+
+    }
+
 }
